@@ -16,3 +16,9 @@ export interface UserStore {
   loginUser: (user: User) => void;
   logoutUser: () => void;
 }
+
+export type LoginInputs = {
+  email: string;
+  password: string;
+  passwordConfirm: string;
+};

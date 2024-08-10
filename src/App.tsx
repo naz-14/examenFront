@@ -12,6 +12,8 @@ import Product from "./pages/Products/Product";
 import NewProduct from "./pages/Products/NewProduct";
 import { useEffect } from "react";
 import { useUserData, useUserStore } from "./store/userStore";
+import User from "./pages/User/User";
+import Home from "./pages/Home";
 
 function App() {
   const { user } = useUserStore();
@@ -28,13 +30,10 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
-        <Route
-          path="/login"
-          element={user ? <Navigate to="/user" /> : <Login />}
-        />
+        <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
         <Route element={<ProtectedRoute user={user} />}>
-          <Route path="/user" element={<Product />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/user" element={<User />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:id" element={<Product />} />
           <Route path="/products/:id" element={<NewProduct />} />

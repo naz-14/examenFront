@@ -1,4 +1,5 @@
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useUserData, useUserStore } from "../store/userStore";
 
 type LoginInputs = {
   email: string;
@@ -13,10 +14,21 @@ function Login() {
     watch,
     formState: { errors },
   } = useForm<LoginInputs>();
-  const onSubmit: SubmitHandler<LoginInputs> = (data) => {
-    console.log(data);
-  };
   const password = watch("password", "");
+  const { userData } = useUserData();
+  const { loginUser } = useUserStore();
+  const onSubmit: SubmitHandler<LoginInputs> = (data) => {
+    //TODO: Implementar login en zustand
+    if (userData) {
+      const { email, password } = userData;
+      if (data.email === email && data.password === password) {
+        loginUser({
+          id: 1,
+          email: data.email,
+        });
+      }
+    }
+  };
   return (
     <main>
       <form onSubmit={handleSubmit(onSubmit)}>

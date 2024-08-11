@@ -75,7 +75,7 @@ const TableComponent: React.FC = () => {
         <tbody>
           {productList &&
             currentData.map((item) => (
-              <Link to={`/products/${item.id}`}>
+              <Link to={`/product/${item.id}`}>
                 <tr key={item.id}>
                   <td>{highlightText(item.title, filter)}</td>
                   <td>{item.price}</td>

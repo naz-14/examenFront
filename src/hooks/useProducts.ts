@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useProductStore } from "../store/productStore";
+import { fetchProducts } from "../services/apiServices";
 
 const useProductsData = () => {
   const [loading, setLoading] = useState(false);
@@ -10,9 +11,8 @@ const useProductsData = () => {
     setLoading(true);
     const fetchData = async () => {
       try {
-        const response = await fetch("https://fakestoreapi.com/products/");
-        const json = await response.json();
-        setProductsList(json);
+        const products = await fetchProducts();
+        setProductsList(products);
         setLoading(false);
       } catch (error) {
         console.error("Failed to fetch products", error);
@@ -25,9 +25,8 @@ const useProductsData = () => {
     setLoading(true);
     const fetchData = async () => {
       try {
-        const response = await fetch("https://fakestoreapi.com/products/");
-        const json = await response.json();
-        setProductsList(json);
+        const products = await fetchProducts();
+        setProductsList(products);
         setLoading(false);
       } catch (error) {
         console.error("Failed to fetch products", error);

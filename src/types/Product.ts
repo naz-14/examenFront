@@ -6,7 +6,7 @@ export interface Product {
   price: string;
   category: string;
   description: string;
-  image: string;
+  image: File[] | string;
 }
 
 export interface ProductDataStore {

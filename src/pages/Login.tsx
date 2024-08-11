@@ -1,6 +1,6 @@
 import { SubmitHandler } from "react-hook-form";
 import { useUserData, useUserStore } from "../store/userStore";
-import UserForm from "./User/UserForm";
+import UserForm from "../components/UserForm";
 
 type LoginInputs = {
   email: string;

@@ -1,5 +1,7 @@
-export interface ProductData {
+export interface ProductData extends Product {
   id: number;
+}
+export interface Product {
   title: string;
   price: string;
   category: string;

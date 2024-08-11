@@ -1,5 +1,5 @@
 import { SubmitHandler } from "react-hook-form";
-import UserForm from "./UserForm";
+import UserForm from "../../components/UserForm";
 import { LoginInputs } from "../../types/User";
 import { useUserData } from "../../store/userStore";
 import { useNavigate } from "react-router-dom";

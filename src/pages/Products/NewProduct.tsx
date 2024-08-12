@@ -24,7 +24,7 @@ function NewProduct() {
       };
       try {
         const createdProduct = await createProduct(productData);
-        console.log({ createdProduct });
+        console.log(createdProduct);
       } catch (error) {
         console.error(error);
       }
@@ -37,7 +37,11 @@ function NewProduct() {
     }
   };
   return (
-    <div>
+    <div className="container">
+      <h1 className="product-form-title">Nuevo producto</h1>
+      <h2 className="product-form-instruction">
+        Ingresa los datos del nuevo producto
+      </h2>
       <ProductForm onSubmit={onSubmit} />
     </div>
   );

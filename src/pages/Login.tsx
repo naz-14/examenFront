@@ -20,13 +20,19 @@ function Login() {
           id: 1,
           email: data.email,
         });
+      } else {
+        alert("Credenciales incorrectas");
       }
     }
   };
   return (
-    <main>
-      <UserForm onSubmit={onSubmit} />
-    </main>
+    <div className="container login">
+      <main className="">
+        <h1 className="login-title">Exament Front</h1>
+        <h2 className="login-title">Login</h2>
+        <UserForm onSubmit={onSubmit} />
+      </main>
+    </div>
   );
 }
 

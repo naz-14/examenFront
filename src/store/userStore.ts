@@ -36,10 +36,12 @@ export const useUserData = create(
     (set) => ({
       userData: null,
       setUserData: (user: UserLogin) => {
-        useUserStore.getState().loginUser({
-          id: 1,
-          email: user.email,
-        });
+        if (useUserStore.getState().user) {
+          useUserStore.getState().loginUser({
+            id: 1,
+            email: user.email,
+          });
+        }
         return set({ userData: user });
       },
     }),

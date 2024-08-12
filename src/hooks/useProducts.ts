@@ -7,11 +7,12 @@ const useProductsData = () => {
   const { setProductsList, productList } = useProductStore();
 
   useEffect(() => {
-    if (productList) return;
+    if (productList.length > 0) return;
     setLoading(true);
     const fetchData = async () => {
       try {
         const products = await fetchProducts();
+        console.log({ products });
         setProductsList(products);
         setLoading(false);
       } catch (error) {

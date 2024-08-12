@@ -17,7 +17,6 @@ export const useProductStore = create(
       },
       updateProduct: (product: ProductData) => {
         return set((state) => {
-          console.log({ state, product });
           if (!state.productList) return { productList: [product] };
           return {
             productList: state.productList.map((p) =>

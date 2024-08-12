@@ -28,7 +28,8 @@ function UpdateProduct() {
     }
   };
   return (
-    <div>
+    <div className="container">
+      <h1 className="product-form-title">Edicion de Producto</h1>
       <UpdateProductForm
         onSubmit={onSubmit}
         productId={id ? parseInt(id) : 0}

@@ -1,0 +1,36 @@
+.product-form-container {
+  margin-top: 1rem;
+  @include md {
+    margin-top: 2rem;
+  }
+}
+.product-form-title {
+  margin: 1rem 0;
+  @include md {
+    margin: 2rem 0;
+  }
+}
+.product-form-instruction {
+  margin: 1rem 0;
+  @include md {
+    margin: 2rem 0;
+  }
+}
+.btn-container {
+  button {
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+    @include md {
+      margin-top: 0;
+      width: unset;
+    }
+  }
+  @include md {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+  }
+}

@@ -1,5 +1,3 @@
-import React from "react";
-
 function LoadingOverlay() {
   return (
     <div className="loading-state">

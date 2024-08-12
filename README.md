@@ -23,17 +23,15 @@ Para iniciar el proyecto en modo desarrollo ejecuta el comando:
 pnpm dev
 ```
 
-## Generacion de build
+## Inicio del proyecto en modo produccion
 
-Para poder correr el proyecto en modo produccion primero ejecuta el comando:
+### Para poder correr el proyecto en modo produccion primero ejecuta el comando:
 
 ```bash
 pnpm build
 ```
 
-## Inicio del proyecto en modo produccion
-
-Una vez generada la build puedes servir el proyecto en modo produccion con:
+### Una vez generala la build puedes servir el proyecto en modo produccion con el comando:
 
 ```bash
 pnpm preview

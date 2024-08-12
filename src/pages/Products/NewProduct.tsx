@@ -24,7 +24,7 @@ function NewProduct() {
       };
       try {
         const createdProduct = await createProduct(productData);
-        console.log({ createdProduct });
+        console.log(createdProduct);
       } catch (error) {
         console.error(error);
       }

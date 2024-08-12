@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
 import { LoginInputs } from "../types/User";
-import { useUserData, useUserStore } from "../store/userStore";
+import { useUserStore } from "../store/userStore";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 type UserFormProps = {
   onSubmit: (data: LoginInputs) => void;
@@ -11,6 +11,8 @@ type UserFormProps = {
 function UserForm({ onSubmit }: UserFormProps) {
   const navigate = useNavigate();
   const { user } = useUserStore();
+  const { pathname } = useLocation();
+  console.log({ pathname });
   useEffect(() => {
     if (user) {
       setValue("email", user.email);
@@ -82,20 +84,24 @@ function UserForm({ onSubmit }: UserFormProps) {
             <span className="circle3"></span>
             <span className="circle4"></span>
             <span className="circle5"></span>
-            <span className="text">Guardar cambios</span>
+            <span className="text">
+              {pathname !== "/login" ? "Guardar cambios" : "Login"}
+            </span>
           </button>
-          <button
-            type="submit"
-            className="btn-primary"
-            onClick={() => navigate("/products")}
-          >
-            <span className="circle1"></span>
-            <span className="circle2"></span>
-            <span className="circle3"></span>
-            <span className="circle4"></span>
-            <span className="circle5"></span>
-            <span className="text">Cancelar</span>
-          </button>
+          {pathname !== "/login" && (
+            <button
+              type="button"
+              className="btn-primary"
+              onClick={() => navigate("/products")}
+            >
+              <span className="circle1"></span>
+              <span className="circle2"></span>
+              <span className="circle3"></span>
+              <span className="circle4"></span>
+              <span className="circle5"></span>
+              <span className="text">Cancelar</span>
+            </button>
+          )}
         </div>
         {/* <input type="submit" className="btn-primary" /> */}
 

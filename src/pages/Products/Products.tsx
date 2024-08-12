@@ -24,6 +24,7 @@ const TableComponent: React.FC = () => {
     currentData,
     getPaginationGroup,
   } = usePagination(sortedData, itemsPerPage);
+  console.log({ productList });
 
   if (!productList || loadingData) return <div>Loading...</div>;
   return (

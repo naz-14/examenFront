@@ -15,7 +15,7 @@ function User() {
     return navigate("/products");
   };
   return (
-    <div>
+    <div className="container">
       <UserForm onSubmit={onSubmit} />
     </div>
   );

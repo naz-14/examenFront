@@ -37,7 +37,11 @@ function NewProduct() {
     }
   };
   return (
-    <div>
+    <div className="container">
+      <h1 className="product-form-title">Nuevo producto</h1>
+      <h2 className="product-form-instruction">
+        Ingresa los datos del nuevo producto
+      </h2>
       <ProductForm onSubmit={onSubmit} />
     </div>
   );

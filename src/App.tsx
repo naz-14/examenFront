@@ -1,3 +1,4 @@
+import "./app.scss";
 import {
   HashRouter as Router,
   Route,
@@ -13,7 +14,6 @@ import NewProduct from "./pages/Products/NewProduct";
 import { useEffect } from "react";
 import { useUserData, useUserStore } from "./store/userStore";
 import User from "./pages/User/User";
-import Home from "./pages/Home";
 import UpdateProduct from "./pages/Products/UpdateProduct";
 
 function App() {
@@ -27,13 +27,15 @@ function App() {
       });
     }
   }, []);
-  console.log({ user });
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
+        <Route
+          path="/login"
+          element={user ? <Navigate to="/products" /> : <Login />}
+        />
         <Route element={<ProtectedRoute user={user} />}>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Navigate to="/products" />} />
           <Route path="/user" element={<User />} />
           <Route path="/products" element={<Products />} />
           <Route path="/product/:id" element={<Product />} />

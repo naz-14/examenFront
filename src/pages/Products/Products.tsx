@@ -3,13 +3,14 @@ import useSorting from "../../hooks/useSorting";
 import usePagination from "../../hooks/usePagination";
 import useFilter from "../../hooks/useFilter";
 import highlightText from "../../components/HightlightText";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // Definimos una interfaz para los datos de la tabla
 
 const TableComponent: React.FC = () => {
+  const navigate = useNavigate();
   const itemsPerPage = 1;
-  const { productList, refreshData, loading: loadingData } = useProductsData();
+  const { productList, loading: loadingData } = useProductsData();
   const { filter, filteredData, setFilter } = useFilter(productList, "");
   const { sortedData, handleSort, sortColumn, sortOrder } = useSorting(
     filteredData,
@@ -26,8 +27,10 @@ const TableComponent: React.FC = () => {
 
   if (!productList || loadingData) return <div>Loading...</div>;
   return (
-    <div>
-      <button onClick={refreshData}>Refresh Data</button>
+    <div className="container">
+      <h2 style={{ marginTop: "20px" }}>Product list</h2>
+
+      {/* <button onClick={refreshData}>Refresh Data</button> */}
       <input
         type="text"
         value={filter}
@@ -37,82 +40,95 @@ const TableComponent: React.FC = () => {
         }}
         placeholder="Filter by name"
       />
-      <table>
-        <thead>
-          <tr>
-            <th>
-              <button
-                onClick={() => {
-                  handleSort("title");
-                  setCurrentPage(1);
-                }}
-              >
-                Name{" "}
-                {sortColumn === "title"
-                  ? sortOrder === "asc"
-                    ? "↑"
-                    : "↓"
-                  : ""}
-              </button>
-            </th>
-            <th>
-              <button
-                onClick={() => {
-                  handleSort("price");
-                  setCurrentPage(1);
-                }}
-              >
-                Price{" "}
-                {sortColumn === "price"
-                  ? sortOrder === "asc"
-                    ? "↑"
-                    : "↓"
-                  : ""}
-              </button>
-            </th>
-            <th>
-              <p>Actions</p>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {productList &&
-            currentData.map((item) => (
-              <tr key={item.id}>
-                <Link to={`/product/${item.id}`}>
-                  <td>{highlightText(item.title, filter)}</td>
-                  <td>{item.price}</td>
-                </Link>
-                <td>
-                  <Link to={`/product/create/${item.id}`}>edit</Link>
-                </td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
-      <button
-        onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-        disabled={currentPage === 1}
-      >
-        Previous
-      </button>
+      <div>
+        <table className="styled-table">
+          <thead>
+            <tr>
+              <th>
+                <button
+                  onClick={() => {
+                    handleSort("title");
+                    setCurrentPage(1);
+                  }}
+                  className="unstyled-button"
+                >
+                  Name{" "}
+                  {sortColumn === "title"
+                    ? sortOrder === "asc"
+                      ? "↑"
+                      : "↓"
+                    : ""}
+                </button>
+              </th>
+              <th>
+                <button
+                  onClick={() => {
+                    handleSort("price");
+                    setCurrentPage(1);
+                  }}
+                  className="unstyled-button"
+                >
+                  Price{" "}
+                  {sortColumn === "price"
+                    ? sortOrder === "asc"
+                      ? "↑"
+                      : "↓"
+                    : ""}
+                </button>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {productList &&
+              currentData.map((item) => (
+                <>
+                  <tr
+                    key={item.id}
+                    onClick={() => navigate(`/product/${item.id}`)}
+                  >
+                    <td>
+                      <span>{highlightText(item.title, filter)}</span>
+                    </td>
+                    <td>
+                      <span>${item.price}</span>
+                    </td>
+                  </tr>
+                </>
+              ))}
+          </tbody>
+        </table>
+        <div className="pagination-container">
+          <button
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+            className="pagination-button"
+          >
+            Previous
+          </button>
 
-      {getPaginationGroup().map((item, index) => (
-        <button
-          key={index}
-          onClick={() => setCurrentPage(item)}
-          className={currentPage === item ? "active" : ""}
-        >
-          {item}
-        </button>
-      ))}
+          {getPaginationGroup().map((item, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentPage(item)}
+              className={`pagination-button ${
+                currentPage === item ? "active" : ""
+              }`}
+            >
+              {item}
+            </button>
+          ))}
 
-      <button
-        onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-        disabled={currentPage === totalPages}
-      >
-        Next
-      </button>
+          <button
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+            }
+            disabled={currentPage === totalPages}
+            className="pagination-button"
+          >
+            Next
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,0 +1,18 @@
+.auth-layout {
+  padding: 1rem 0;
+  border-bottom: 1px solid rgb(231, 8, 8);
+  .auth-components-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .btn-primary {
+    padding: 0.5rem;
+  }
+}
+.nav-buttons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: nowrap;
+}

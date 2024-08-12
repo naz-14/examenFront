@@ -29,18 +29,25 @@ const TableComponent: React.FC = () => {
   if (!productList || loadingData) return <div>Loading...</div>;
   return (
     <div className="container">
-      <h2 style={{ marginTop: "20px" }}>Product list</h2>
-
       {/* <button onClick={refreshData}>Refresh Data</button> */}
-      <input
-        type="text"
-        value={filter}
-        onChange={(e) => {
-          setFilter(e.target.value);
-          setCurrentPage(1);
-        }}
-        placeholder="Filter by name"
-      />
+      <h2 style={{ marginTop: "20px" }}>Lista de productos</h2>
+      <div className="list-btn-container" style={{ marginTop: "20px" }}>
+        <input
+          type="text"
+          value={filter}
+          onChange={(e) => {
+            setFilter(e.target.value);
+            setCurrentPage(1);
+          }}
+          placeholder="Filtrar por nombre"
+        />
+        <button
+          className="btn-primary"
+          onClick={() => navigate("/product/create")}
+        >
+          Crear producto
+        </button>
+      </div>
       <div className="table-container">
         <table className="styled-table">
           <thead>

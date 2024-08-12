@@ -122,6 +122,34 @@ textarea:focus {
   box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
 }
 // TODO create a secondary button
+
+.btn-secondary {
+  font-weight: bold;
+  color: rgb(219, 16, 16);
+  background-color: white;
+  padding: 1em 2em;
+  border: 1px solid rgb(219, 16, 16);
+  border-radius: 0.6rem;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  z-index: 1;
+  :hover {
+    color: white;
+  }
+}
+.btn-secondary span:not(:nth-child(6)) {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 30px;
+  width: 30px;
+  background-color: rgb(219, 16, 16);
+  border-radius: 50%;
+  transition: 0.6s ease;
+}
+
 .btn-primary {
   font-weight: bold;
   color: white;
@@ -146,31 +174,38 @@ textarea:focus {
   transition: 0.6s ease;
 }
 
-.btn-primary span:nth-child(6) {
+.btn-primary span:nth-child(6),
+.btn-secondary span:nth-child(6) {
   position: relative;
 }
 
-.btn-primary span:nth-child(1) {
+.btn-primary span:nth-child(1),
+.btn-secondary span:nth-child(1) {
   transform: translate(-3.3em, -4em);
 }
 
-.btn-primary span:nth-child(2) {
+.btn-primary span:nth-child(2),
+.btn-secondary span:nth-child(2) {
   transform: translate(-6em, 1.3em);
 }
 
-.btn-primary span:nth-child(3) {
+.btn-primary span:nth-child(3),
+.btn-secondary span:nth-child(3) {
   transform: translate(-0.2em, 1.8em);
 }
 
-.btn-primary span:nth-child(4) {
+.btn-primary span:nth-child(4),
+.btn-secondary span:nth-child(4) {
   transform: translate(3.5em, 1.4em);
 }
 
-.btn-primary span:nth-child(5) {
+.btn-primary span:nth-child(5),
+.btn-secondary span:nth-child(5) {
   transform: translate(3.5em, -3.8em);
 }
 
-.btn-primary:hover span:not(:nth-child(6)) {
+.btn-primary:hover span:not(:nth-child(6)),
+.btn-secondary:hover span:not(:nth-child(6)) {
   transform: translate(-50%, -50%) scale(4);
   transition: 1.5s ease;
 }
@@ -182,4 +217,27 @@ textarea:focus {
 }
 btn {
   text-transform: uppercase;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
+
+.spinner {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 9px solid;
+  border-color: #dbdcef;
+  border-right-color: rgb(219, 16, 16);
+  animation: spinner-d3wgkg 1s infinite linear;
+}
+
+@keyframes spinner-d3wgkg {
+  to {
+    transform: rotate(1turn);
+  }
 }

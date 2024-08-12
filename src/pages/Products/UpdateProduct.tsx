@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useProductStore } from "../../store/productStore";
 import { UpdateProduct as IUpdateProduct } from "../../types/Product";
 import UpdateProductForm from "../../components/UpdateProductForm";
+import Toast from "../../components/Toast";
 
 function UpdateProduct() {
   const { id } = useParams();
@@ -15,15 +16,31 @@ function UpdateProduct() {
       reader.readAsDataURL(imageFile);
       reader.onloadend = () => {
         const base64String = reader.result as string;
-        productData = { ...data, image: base64String };
+        productData = {
+          ...data,
+          price: `${parseFloat(data.price)}`,
+          image: base64String,
+        };
         updateProductStore(productData);
       };
+      await Toast.fire({
+        icon: "success",
+        title: "Producto Actualizado",
+      });
       navigate("/product/" + id);
     } else {
       const imageFile = productList.find(
         (p) => p.id === parseInt(id || "", 10)
       )?.image;
-      updateProductStore({ ...data, image: imageFile || "" });
+      updateProductStore({
+        ...data,
+        price: `${parseFloat(data.price)}`,
+        image: imageFile || "",
+      });
+      Toast.fire({
+        icon: "success",
+        title: "Producto Actualizado",
+      });
       navigate("/product/" + id);
     }
   };

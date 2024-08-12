@@ -91,7 +91,7 @@ function UserForm({ onSubmit }: UserFormProps) {
           {pathname !== "/login" && (
             <button
               type="button"
-              className="btn-primary"
+              className="btn-secondary"
               onClick={() => navigate("/products")}
             >
               <span className="circle1"></span>

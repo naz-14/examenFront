@@ -1,7 +1,9 @@
 import { useNavigate, useParams } from "react-router-dom";
 import useProductsData from "../../hooks/useProducts";
+import { useState } from "react";
 
 function Product({}) {
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const { id } = useParams();
   const { productList } = useProductsData();
@@ -16,10 +18,19 @@ function Product({}) {
       <div className="product-container">
         <div className="product-image-container">
           <h1 className="product-title">{product.title}</h1>
-          <img
-            src={typeof product.image === "string" ? product.image : ""}
-            alt={product.title}
-          />
+          <div
+            style={{ display: loading ? "block" : "none" }}
+            className="loader-container"
+          >
+            <div className="spinner"></div>
+          </div>
+          <div style={{ display: loading ? "none" : "block" }}>
+            <img
+              src={typeof product.image === "string" ? product.image : ""}
+              alt={product.title}
+              onLoad={() => setLoading(false)}
+            />
+          </div>
         </div>
         <div className="product-info">
           <h1 className="product-title">{product.title}</h1>
@@ -46,7 +57,7 @@ function Product({}) {
           <span className="text">Editar producto</span>
         </button>
         <button
-          className="btn btn-primary"
+          className="btn btn-secondary"
           onClick={() => navigate("/products")}
         >
           <span className="circle1"></span>

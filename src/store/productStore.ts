@@ -15,6 +15,17 @@ export const useProductStore = create(
           return { productList: [...state.productList, product] };
         });
       },
+      updateProduct: (product: ProductData) => {
+        return set((state) => {
+          console.log({ state, product });
+          if (!state.productList) return { productList: [product] };
+          return {
+            productList: state.productList.map((p) =>
+              p.id === product.id ? product : p
+            ),
+          };
+        });
+      },
       deleteProduct: (id: number) => {
         return set((state) => {
           return {

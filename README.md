@@ -1,30 +1,29 @@
-# React + TypeScript + Vite
+# Proyecto test react
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto utiliza `pnpm` como gestor de paquetes. A continuación, se detallan los pasos para instalar dependencias, correr el proyecto en modo desarrollo, ademas de generar y servir la build de produccion.
 
-Currently, two official plugins are available:
+## Requisitos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Node.js (versión recomendada: >= 20.x)
+- pnpm (versión recomendada: >= 9.x)
 
-## Expanding the ESLint configuration
+## Instalación de dependencias
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Antes de correr el proyecto, asegúrate de instalar todas las dependencias necesarias:
 
-- Configure the top-level `parserOptions` property like this:
+````bash
+pnpm install
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Inicio del proyecto en modo desarrollo
+```bash
+pnpm dev
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Para generar la build de produccion ejecutar:
+```bash
+pnpm build
+
+## Una vez generada la build puedes servir el proyecto en modo produccion con:
+
+```bash
+pnpm preview
+````

@@ -20,8 +20,9 @@ function Login() {
           id: 1,
           email: data.email,
         });
+      } else {
+        alert("Credenciales incorrectas");
       }
-      alert("Credenciales incorrectas");
     }
   };
   return (

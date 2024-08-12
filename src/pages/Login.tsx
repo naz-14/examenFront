@@ -1,6 +1,7 @@
 import { SubmitHandler } from "react-hook-form";
 import { useUserData, useUserStore } from "../store/userStore";
 import UserForm from "../components/UserForm";
+import Toast from "../components/Toast";
 
 type LoginInputs = {
   email: string;
@@ -12,7 +13,6 @@ function Login() {
   const { userData } = useUserData();
   const { loginUser } = useUserStore();
   const onSubmit: SubmitHandler<LoginInputs> = (data) => {
-    //TODO: Implementar login en zustand
     if (userData) {
       const { email, password } = userData;
       if (data.email === email && data.password === password) {
@@ -21,7 +21,10 @@ function Login() {
           email: data.email,
         });
       } else {
-        alert("Credenciales incorrectas");
+        Toast.fire({
+          icon: "error",
+          title: "Credenciales incorrectas",
+        });
       }
     }
   };

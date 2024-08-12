@@ -8,23 +8,32 @@ function AuthLayout({ children }: { children: React.ReactNode }) {
     logoutUser();
   };
   return (
-    <div>
-      <nav className="auth-layout">
-        <div className="container auth-components-container">
-          <div>
-            <h1>Examen front</h1>
+    <div className="auth-layout-container">
+      <div>
+        <nav className="auth-layout">
+          <div className="container auth-components-container">
+            <div>
+              <h1>Examen front</h1>
+            </div>
+            <div className="nav-buttons">
+              <button onClick={() => navigate("/user")} className="btn-primary">
+                Usuario
+              </button>
+              <button onClick={handleLogout} className="btn-primary">
+                Logout
+              </button>
+            </div>
           </div>
-          <div className="nav-buttons">
-            <button onClick={() => navigate("/user")} className="btn-primary">
-              Usuario
-            </button>
-            <button onClick={handleLogout} className="btn-primary">
-              Logout
-            </button>
+        </nav>
+        {children}
+      </div>
+      <footer className="footer-container">
+        <div className="container">
+          <div>
+            <h1 className="footer-text">Uriel Alvarez V.</h1>
           </div>
         </div>
-      </nav>
-      {children}
+      </footer>
     </div>
   );
 }

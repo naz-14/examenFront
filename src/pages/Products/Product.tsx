@@ -36,17 +36,6 @@ function Product({}) {
       <div className="product-actions-container">
         <button
           className="btn btn-primary"
-          onClick={() => navigate("/products")}
-        >
-          <span className="circle1"></span>
-          <span className="circle2"></span>
-          <span className="circle3"></span>
-          <span className="circle4"></span>
-          <span className="circle5"></span>
-          <span className="text">Go back to list</span>
-        </button>
-        <button
-          className="btn btn-primary"
           onClick={() => navigate("/product/create/" + product.id)}
         >
           <span className="circle1"></span>
@@ -54,7 +43,18 @@ function Product({}) {
           <span className="circle3"></span>
           <span className="circle4"></span>
           <span className="circle5"></span>
-          <span className="text">Edit product</span>
+          <span className="text">Editar producto</span>
+        </button>
+        <button
+          className="btn btn-primary"
+          onClick={() => navigate("/products")}
+        >
+          <span className="circle1"></span>
+          <span className="circle2"></span>
+          <span className="circle3"></span>
+          <span className="circle4"></span>
+          <span className="circle5"></span>
+          <span className="text">Atras</span>
         </button>
       </div>
     </div>

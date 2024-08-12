@@ -16,7 +16,7 @@ function AuthLayout({ children }: { children: React.ReactNode }) {
           </div>
           <div className="nav-buttons">
             <button onClick={() => navigate("/user")} className="btn-primary">
-              Modificar Usuario
+              Usuario
             </button>
             <button onClick={handleLogout} className="btn-primary">
               Logout

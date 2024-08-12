@@ -1,6 +1,5 @@
 .table-container {
-  overflow-x: scroll;
-  width: 100%;
+  overflow-x: auto;
 }
 .styled-table {
   border-collapse: collapse;
@@ -8,7 +7,7 @@
   font-size: 0.9em;
   min-width: 400px;
   width: 100%;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgb(104, 104, 104);
   thead {
     tr {
       .styled-table thead tr {

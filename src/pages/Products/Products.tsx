@@ -105,7 +105,7 @@ const TableComponent: React.FC = () => {
           disabled={currentPage === 1}
           className="pagination-button"
         >
-          Previous
+          {"<"}
         </button>
 
         {getPaginationGroup().map((item, index) => (
@@ -127,7 +127,7 @@ const TableComponent: React.FC = () => {
           disabled={currentPage === totalPages}
           className="pagination-button"
         >
-          Next
+          {">"}
         </button>
       </div>
     </div>

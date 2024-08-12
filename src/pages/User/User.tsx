@@ -2,7 +2,7 @@ import { SubmitHandler } from "react-hook-form";
 import UserForm from "./UserForm";
 import { LoginInputs } from "../../types/User";
 import { useUserData } from "../../store/userStore";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function User() {
   const { setUserData } = useUserData();

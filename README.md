@@ -11,19 +11,36 @@ Este proyecto utiliza `pnpm` como gestor de paquetes. A continuación, se detall
 
 Antes de correr el proyecto, asegúrate de instalar todas las dependencias necesarias:
 
-````bash
+```bash
 pnpm install
+```
 
 ## Inicio del proyecto en modo desarrollo
+
+Para iniciar el proyecto en modo desarrollo ejecuta el comando:
+
 ```bash
 pnpm dev
+```
 
-## Para generar la build de produccion ejecutar:
+## Generacion de build
+
+Para poder correr el proyecto en modo produccion primero ejecuta el comando:
+
 ```bash
 pnpm build
+```
 
-## Una vez generada la build puedes servir el proyecto en modo produccion con:
+## Inicio del proyecto en modo produccion
+
+Una vez generada la build puedes servir el proyecto en modo produccion con:
 
 ```bash
 pnpm preview
-````
+```
+
+# Credenciales por default:
+
+## Email: demo@demo.com
+
+## Password: Demo1234

@@ -7,7 +7,6 @@ export const useUserStore = create(
   persist<UserStore>(
     (set) => ({
       user: null,
-      setUserdata: (user: UserStore["user"]) => set({ user }),
       loginUser: (user: UserStore["user"]) => set({ user }),
       logoutUser: () => set({ user: null }),
     }),
@@ -36,7 +35,13 @@ export const useUserData = create(
   persist<UserLoginStore>(
     (set) => ({
       userData: null,
-      setUserData: (user: UserLogin) => set({ userData: user }),
+      setUserData: (user: UserLogin) => {
+        useUserStore.getState().loginUser({
+          id: 1,
+          email: user.email,
+        });
+        return set({ userData: user });
+      },
     }),
     {
       name: "userData",

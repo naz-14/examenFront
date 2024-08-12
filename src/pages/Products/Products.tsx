@@ -41,7 +41,7 @@ const TableComponent: React.FC = () => {
         }}
         placeholder="Filter by name"
       />
-      <div>
+      <div className="table-container">
         <table className="styled-table">
           <thead>
             <tr>
@@ -98,37 +98,37 @@ const TableComponent: React.FC = () => {
               ))}
           </tbody>
         </table>
-        <div className="pagination-container">
-          <button
-            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-            disabled={currentPage === 1}
-            className="pagination-button"
-          >
-            Previous
-          </button>
+      </div>
+      <div className="pagination-container">
+        <button
+          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+          disabled={currentPage === 1}
+          className="pagination-button"
+        >
+          Previous
+        </button>
 
-          {getPaginationGroup().map((item, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentPage(item)}
-              className={`pagination-button ${
-                currentPage === item ? "active" : ""
-              }`}
-            >
-              {item}
-            </button>
-          ))}
-
+        {getPaginationGroup().map((item, index) => (
           <button
-            onClick={() =>
-              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-            }
-            disabled={currentPage === totalPages}
-            className="pagination-button"
+            key={index}
+            onClick={() => setCurrentPage(item)}
+            className={`pagination-button ${
+              currentPage === item ? "active" : ""
+            }`}
           >
-            Next
+            {item}
           </button>
-        </div>
+        ))}
+
+        <button
+          onClick={() =>
+            setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+          }
+          disabled={currentPage === totalPages}
+          className="pagination-button"
+        >
+          Next
+        </button>
       </div>
     </div>
   );

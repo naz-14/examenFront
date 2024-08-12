@@ -1,3 +1,7 @@
+.table-container {
+  overflow-x: scroll;
+  width: 100%;
+}
 .styled-table {
   border-collapse: collapse;
   margin: 25px 0;
@@ -39,6 +43,8 @@
   display: flex;
   justify-content: center;
   .pagination-button {
+    white-space: nowrap;
+    flex-shrink: 0;
     min-width: 40px;
     padding: 0.5rem;
     cursor: pointer;

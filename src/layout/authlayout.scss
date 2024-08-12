@@ -1,3 +1,16 @@
+.auth-layout-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .footer-container {
+    margin-top: 2rem;
+    padding: 1rem 0;
+    border-top: 1px solid rgb(231, 8, 8);
+    display: flex;
+    flex-shrink: 0;
+  }
+}
 .auth-layout {
   padding: 1rem 0;
   border-bottom: 1px solid rgb(231, 8, 8);
@@ -15,4 +28,9 @@
   gap: 1rem;
   align-items: center;
   flex-wrap: nowrap;
+}
+.footer-text {
+  white-space: nowrap;
+  font-weight: bold;
+  font-size: 1rem;
 }

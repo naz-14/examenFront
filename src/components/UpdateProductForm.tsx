@@ -3,6 +3,7 @@ import { UpdateProduct } from "../types/Product";
 import { useEffect, useState } from "react";
 import { useProductStore } from "../store/productStore";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 type ProductFormProps = {
   onSubmit: (data: UpdateProduct) => void;
@@ -25,9 +26,24 @@ function UpdateProductForm({ onSubmit, productId }: ProductFormProps) {
     setValue("actualImage", product.image as string);
   }, [productList]);
 
-  const handleDeleteProduct = () => {
-    deleteProduct(productId);
-    navigate("/products");
+  const handleDeleteProduct = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    Swal.fire({
+      title: "Estas seguro?",
+      text: "No podras revertir este cambio!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, Eliminar!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        await deleteProduct(productId);
+        navigate("/products");
+      }
+    });
+    // deleteProduct(productId);
+    // navigate("/products");
   };
 
   const {
@@ -134,7 +150,11 @@ function UpdateProductForm({ onSubmit, productId }: ProductFormProps) {
             <span className="circle5"></span>
             <span className="text">Guardar cambios</span>
           </button>
-          <button className="btn-primary" onClick={handleDeleteProduct}>
+          <button
+            className="btn-secondary"
+            onClick={handleDeleteProduct}
+            type="button"
+          >
             <span className="circle1"></span>
             <span className="circle2"></span>
             <span className="circle3"></span>
@@ -142,7 +162,11 @@ function UpdateProductForm({ onSubmit, productId }: ProductFormProps) {
             <span className="circle5"></span>
             <span className="text">Eliminar producto</span>
           </button>
-          <button className="btn-primary" onClick={() => navigate("/products")}>
+          <button
+            type="button"
+            className="btn-secondary"
+            onClick={() => navigate("/products")}
+          >
             <span className="circle1"></span>
             <span className="circle2"></span>
             <span className="circle3"></span>

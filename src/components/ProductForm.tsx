@@ -119,7 +119,11 @@ function ProductForm({ onSubmit }: ProductFormProps) {
             <span className="circle5"></span>
             <span className="text">Crear</span>
           </button>
-          <button className="btn-primary" onClick={() => navigate("/products")}>
+          <button
+            type="button"
+            className="btn-secondary"
+            onClick={() => navigate("/products")}
+          >
             <span className="circle1"></span>
             <span className="circle2"></span>
             <span className="circle3"></span>

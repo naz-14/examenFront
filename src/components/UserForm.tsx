@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { LoginInputs } from "../../types/User";
+import { LoginInputs } from "../types/User";
 
 type UserFormProps = {
   onSubmit: (data: LoginInputs) => void;

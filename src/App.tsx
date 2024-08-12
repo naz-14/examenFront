@@ -35,8 +35,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/user" element={<User />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/products/:id" element={<Product />} />
-          <Route path="/products/:id" element={<NewProduct />} />
+          <Route path="/product/:id" element={<Product />} />
+          <Route path="/product/new" element={<NewProduct />} />
         </Route>
         <Route path="*" element={<Page404 />} />
       </Routes>

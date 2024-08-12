@@ -31,7 +31,7 @@ pnpm dev
 pnpm build
 ```
 
-### Una vez generala la build puedes servir el proyecto en modo produccion con el comando:
+### Una vez generada la build puedes servir el proyecto en modo produccion con el comando:
 
 ```bash
 pnpm preview

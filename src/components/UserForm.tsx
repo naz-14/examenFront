@@ -68,7 +68,10 @@ function UserForm({ onSubmit }: UserFormProps) {
           <input
             type="password"
             {...register("passwordConfirm", {
-              required: { message: "El password es requerido", value: true },
+              required: {
+                message: "La confirmacion de la contraseña es requerida",
+                value: true,
+              },
               validate: (val: string) => {
                 if (watch("password") != val) {
                   return "Los passwords no coinciden";

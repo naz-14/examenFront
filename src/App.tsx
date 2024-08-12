@@ -14,6 +14,7 @@ import { useEffect } from "react";
 import { useUserData, useUserStore } from "./store/userStore";
 import User from "./pages/User/User";
 import Home from "./pages/Home";
+import UpdateProduct from "./pages/Products/UpdateProduct";
 
 function App() {
   const { user } = useUserStore();
@@ -36,7 +37,8 @@ function App() {
           <Route path="/user" element={<User />} />
           <Route path="/products" element={<Products />} />
           <Route path="/product/:id" element={<Product />} />
-          <Route path="/product/new" element={<NewProduct />} />
+          <Route path="/product/create" element={<NewProduct />} />
+          <Route path="/product/create/:id" element={<UpdateProduct />} />
         </Route>
         <Route path="*" element={<Page404 />} />
       </Routes>

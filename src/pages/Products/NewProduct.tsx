@@ -2,10 +2,11 @@ import ProductForm from "../../components/ProductForm";
 import { Product } from "../../types/Product";
 import { useProductStore } from "../../store/productStore";
 import { randomId } from "../../utils/randomId";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { createProduct } from "../../services/apiServices";
 
 function NewProduct() {
+  const { id } = useParams();
   const navigate = useNavigate();
   const { addProduct, productList } = useProductStore();
   const onSubmit = async (data: Product) => {
@@ -27,6 +28,9 @@ function NewProduct() {
       } catch (error) {
         console.error(error);
       }
+      navigate("/product/" + id);
+    } else if (typeof data.image === "string" && data.id) {
+      addProduct({ ...productData, id: data.id });
       navigate("/product/" + id);
     } else {
       console.error("La imagen proporcionada no es un archivo válido.");

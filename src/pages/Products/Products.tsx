@@ -70,17 +70,23 @@ const TableComponent: React.FC = () => {
                   : ""}
               </button>
             </th>
+            <th>
+              <p>Actions</p>
+            </th>
           </tr>
         </thead>
         <tbody>
           {productList &&
             currentData.map((item) => (
-              <Link to={`/product/${item.id}`}>
-                <tr key={item.id}>
+              <tr key={item.id}>
+                <Link to={`/product/${item.id}`}>
                   <td>{highlightText(item.title, filter)}</td>
                   <td>{item.price}</td>
-                </tr>
-              </Link>
+                </Link>
+                <td>
+                  <Link to={`/product/create/${item.id}`}>edit</Link>
+                </td>
+              </tr>
             ))}
         </tbody>
       </table>

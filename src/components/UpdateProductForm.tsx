@@ -1,16 +1,41 @@
 import { useForm } from "react-hook-form";
-import { Product } from "../types/Product";
+import { UpdateProduct } from "../types/Product";
+import { useEffect, useState } from "react";
+import { useProductStore } from "../store/productStore";
+import { useNavigate } from "react-router-dom";
 
 type ProductFormProps = {
-  onSubmit: (data: Product) => void;
+  onSubmit: (data: UpdateProduct) => void;
+  productId: number;
 };
 
-function ProductForm({ onSubmit }: ProductFormProps) {
+function UpdateProductForm({ onSubmit, productId }: ProductFormProps) {
+  const navigate = useNavigate();
+  const { productList, deleteProduct } = useProductStore();
+  const [product, setProduct] = useState<UpdateProduct>({} as UpdateProduct);
+  useEffect(() => {
+    const product = productList.find((product) => product.id === productId);
+    if (!product) return;
+    setProduct({ ...product, actualImage: product.image as string });
+    setValue("id", product.id);
+    setValue("title", product.title);
+    setValue("price", product.price);
+    setValue("description", product.description);
+    setValue("category", product.category);
+    setValue("actualImage", product.image as string);
+  }, [productList]);
+
+  const handleDeleteProduct = () => {
+    deleteProduct(productId);
+    navigate("/products");
+  };
+
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
-  } = useForm<Product>();
+  } = useForm<UpdateProduct>();
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
@@ -58,31 +83,17 @@ function ProductForm({ onSubmit }: ProductFormProps) {
         />
       </div>
       <div>
+        <label htmlFor="Image">Imagen actual</label>
+        <img src={typeof product.image === "string" ? product.image : ""} />
+        <input type="hidden" {...register("actualImage")} />
+      </div>
+      <div>
         <label htmlFor="Image">Imagen</label>
-        <input
-          type="file"
-          {...register("image", {
-            required: "la imagen es requerida.",
-            validate: {
-              isImage: (files) => {
-                const file = files[0];
-                const validImageTypes = [
-                  "image/jpeg",
-                  "image/png",
-                  "image/webp",
-                  "image/avif",
-                ];
-                return (
-                  (file instanceof File &&
-                    validImageTypes.includes(file.type)) ||
-                  "Solo se permiten imágenes (jpeg, png, webp, avif)."
-                );
-              },
-            },
-          })}
-        />
+        <input type="file" accept="image/*" {...register("image")} />
       </div>
       <input type="submit" />
+
+      <button onClick={handleDeleteProduct}>Delete</button>
 
       <div>
         {errors.title && <p style={{ color: "red" }}>{errors.title.message}</p>}
@@ -107,4 +118,4 @@ function ProductForm({ onSubmit }: ProductFormProps) {
   );
 }
 
-export default ProductForm;
+export default UpdateProductForm;
